@@ -9,19 +9,19 @@ void swap(int* a, int* b) {
 
 int getPartition(int arr[], int s, int e) {
 
-    int i = s-1;
+    int i = s;
     int pivot = arr[e];
 
     for (int k = s; k <= e-1; k++) {
         if (arr[k] < pivot) {
-            i++;
             swap(&arr[k], &arr[i]);
+            i++;
         }
     }
 
-    swap(&arr[i+1], &arr[e]);
+    swap(&arr[i], &arr[e]);
 
-    return i+1;
+    return i;
 }
 
 void quickSort(int arr[], int s, int e) {
@@ -41,7 +41,7 @@ int main() {
 
     clock_t start, end;
 
-    int arr[] = {8, 9, 1, 10, 3, 7, 2};
+    int arr[] = {2, 2, 2, 2, 2, 2, 1};
     int n = 7;
 
     start = clock();
