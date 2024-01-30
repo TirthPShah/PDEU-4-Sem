@@ -41,7 +41,7 @@ int main() {
 
     clock_t start, end;
 
-    int arr[] = {2, 2, 2, 2, 2, 2, 1};
+    int arr[] = {8, 9, 1, 10, 3, 7, 2};
     int n = 7;
 
     start = clock();
@@ -55,6 +55,6 @@ int main() {
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
-
+    printf("\n");
     return 0;
 }
