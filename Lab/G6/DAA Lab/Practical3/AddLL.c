@@ -16,18 +16,18 @@ struct Node* createNode(int data) {
 
 }
 
-struct Node* addNode(struct Node** head, int data) {
+struct Node* addNode(struct Node* head, int data) {
     
-    if(*head == NULL) {
-        *head = createNode(data);
-        return *head;
+    if(head == NULL) {
+        head = createNode(data);
+        return head;
     }
 
     struct Node* temp = createNode(data);
-    temp -> next = *head;
-    *head = temp;
+    temp -> next = head;
+    head = temp;
 
-    return *head;
+    return head;
 }
 
 struct Node* reverseList(struct Node* head) {
@@ -90,12 +90,12 @@ struct Node* addLists(struct Node* first, struct Node* second) {
         }
 
         carry = sum / 10;
-        addNode(&resultHead, sum % 10);
+        resultHead = addNode(resultHead, sum % 10);
 
     }
 
     if (carry > 0) {
-        addNode(&resultHead, carry);
+        resultHead = addNode(resultHead, carry);
     }
 
     return (resultHead);
@@ -115,8 +115,7 @@ int main() {
     while (n != 0) {
 
         value = n % 10;
-        first = addNode(&first, value);
-        printList(first);
+        first = addNode(first, value);
         n /= 10;
 
     }
@@ -127,7 +126,7 @@ int main() {
     while (n != 0) {
 
         value = n % 10;
-        second = addNode(&second, value);
+        second = addNode(second, value);
         n /= 10;
 
     }

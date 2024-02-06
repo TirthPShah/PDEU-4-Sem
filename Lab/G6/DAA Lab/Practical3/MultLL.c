@@ -16,18 +16,18 @@ struct Node* createNode(int data) {
 
 }
 
-struct Node* addNode(struct Node** head, int data) {
+struct Node* addNode(struct Node* head, int data) {
     
-    if(*head == NULL) {
-        *head = createNode(data);
-        return *head;
+    if(head == NULL) {
+        head = createNode(data);
+        return head;
     }
 
     struct Node* temp = createNode(data);
-    temp -> next = *head;
-    *head = temp;
+    temp -> next = head;
+    head = temp;
 
-    return *head;
+    return head;
 }
 
 struct Node* reverseList(struct Node* head) {
@@ -62,9 +62,9 @@ void printList(struct Node* head) {
     printf("\n");
 }
 
-struct Node* addNodeAtEnd(struct Node** head, int data) {
+struct Node* addNodeAtEnd(struct Node* head, int data) {
 
-    struct Node* temp = *head;
+    struct Node* temp = head;
 
     while (temp -> next != NULL) {
         temp = temp -> next;
@@ -72,7 +72,7 @@ struct Node* addNodeAtEnd(struct Node** head, int data) {
 
     temp -> next = createNode(data);
 
-    return *head;
+    return head;
 }
 
 struct Node* addLists(struct Node* first, struct Node* second) {
@@ -103,12 +103,12 @@ struct Node* addLists(struct Node* first, struct Node* second) {
         }
 
         carry = sum / 10;
-        addNode(&resultHead, sum % 10);
+        resultHead = addNode(resultHead, sum % 10);
 
     }
 
     if (carry > 0) {
-        addNode(&resultHead, carry);
+        resultHead = addNode(resultHead, carry);
     }
 
     return (resultHead);
@@ -150,17 +150,17 @@ struct Node* multiplyList(struct Node* first, struct Node* second) {
             int sum = carry + (tempFirst -> data * second -> data);
             carry = sum / 10;
 
-            addNode(&temp, sum % 10);
+            temp = addNode(temp, sum % 10);
             tempFirst = tempFirst -> next;
 
         }
 
         if (carry > 0) {
-            addNode(&temp, carry);
+            temp = addNode(temp, carry);
         }
 
         for (int i = 0; i < pow; i++) {
-            addNodeAtEnd(&temp, 0);
+            temp = addNodeAtEnd(temp, 0);
         }
 
         ans = addLists(ans, temp);
@@ -187,7 +187,7 @@ int main() {
     while (m != 0) {
 
         value = m % 10;
-        first = addNode(&first, value);
+        first = addNode(first, value);
         m /= 10;
 
     }
@@ -198,7 +198,7 @@ int main() {
     while (n != 0) {
 
         value = n % 10;
-        second = addNode(&second, value);
+        second = addNode(second, value);
         n /= 10;
 
     }
