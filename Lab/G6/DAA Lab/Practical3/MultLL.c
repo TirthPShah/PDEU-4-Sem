@@ -179,16 +179,16 @@ int main() {
     struct Node* first = NULL;
     struct Node* second = NULL;
 
-    int m, n, value;
+    int n, temp;
 
     printf("Enter the first number: ");
-    scanf("%d", &m);
+    scanf("%d", &n);
 
-    while (m != 0) {
+    while (n != 0) {
 
-        value = m % 10;
-        first = addNode(first, value);
-        m /= 10;
+        temp = n % 10;
+        first = addNode(first, temp);
+        n /= 10;
 
     }
 
@@ -197,8 +197,8 @@ int main() {
 
     while (n != 0) {
 
-        value = n % 10;
-        second = addNode(second, value);
+        temp = n % 10;
+        second = addNode(second, temp);
         n /= 10;
 
     }
